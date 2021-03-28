@@ -1,4 +1,4 @@
-from tests.rover_tests import *
+from rover_tests import *
 
 def rover_tests(rover):
     if not buzzer_tests(rover):
