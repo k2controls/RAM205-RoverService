@@ -15,7 +15,8 @@ class Rover():
         self.sonar_ping = None
         self.warner = None
 
-    def__del__(self):
+    def __del__(self):
+    
         self.buzzer = None
         self.camera = None
         self.gimbal = None
