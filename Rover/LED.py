@@ -10,7 +10,7 @@ class LED():
     _pwm = None
     _duty_cycle = None
 
-    def __init__(self, pin, active_low=True):
+    def __init__(self, pin, active_low=False):
         self.pin = pin
         self.active_low = active_low
 
@@ -47,7 +47,7 @@ class LED():
         if self._pwm:
             if self.active_low:
                 self._duty_cycle = 100
-            else
+            else:
                 self._duty_cycle = 0
             self._pwm.ChangeDutyCycle(self._duty_cycle)
         else:

@@ -1,6 +1,6 @@
 from Rover.RoverDrive import Motion
 
-def do_tests(rover):
+def test_line_follower(rover):
     test_count = 0
     lf = rover.line_follower
 

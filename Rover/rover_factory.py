@@ -1,19 +1,18 @@
 ''' Call make_rover() to construct Rover object 
 along with child objects
 '''
-from Rover import *
-# from Rover.Buzzer import Buzzer
-# from Rover.Camera import Camera
-# from Rover.Gimbal import Gimbal
-# from Rover.LED import LED
-# from Rover.LineFollower import LineFollower
-# from Rover.RGBLed import RGBLed
-# from Rover.Rover import Rover
-# from Rover.RoverDrive import RoverDrive
-# from Rover.RoverPins import RoverPins
-# from Rover.Servo import Servo
-# from Rover.SonarPing import SonarPing
-# from Rover.Warner import Warner
+from Rover.Rover import Rover
+from Rover.Buzzer import Buzzer
+from Rover.Camera import Camera
+from Rover.Gimbal import Gimbal
+from Rover.LED import LED
+from Rover.LineFollower import LineFollower
+from Rover.RGBLed import RGBLed
+from Rover.RoverDrive import RoverDrive
+from Rover.RoverPins import RoverPins
+from Rover.Servo import Servo
+from Rover.SonarPing import SonarPing
+from Rover.Warner import Warner
 
 def make_rover():
     rover = Rover()

@@ -1,5 +1,5 @@
 
-def do_tests(rover):
+def test_warner(rover):
     test_count = 0
 
     print("Testing warner.")

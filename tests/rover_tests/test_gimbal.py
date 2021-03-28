@@ -1,5 +1,5 @@
 
-def do_tests(rover):
+def test_gimbal(rover):
     test_count = 0
 
     print("Testing gimbal.")

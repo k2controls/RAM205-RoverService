@@ -1,5 +1,5 @@
 
-def do_tests(rover):
+def test_sonar_ping(rover):
     test_count = 0
 
     print("Testing sonar ping.")

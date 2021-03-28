@@ -1,6 +1,6 @@
 from Rover.RoverDrive import Motion
 
-def do_tests(rover):
+def test_rover_drive(rover):
     test_count = 0
 
     drive = rover.rover_drive
