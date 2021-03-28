@@ -1,6 +1,6 @@
 from tests.rover_tests import *
 
-def rover_tests(rover)
+def rover_tests(rover):
     if not buzzer_tests(rover):
         print("buzzer tests failed.")
     elif not camera_tests(rover):
