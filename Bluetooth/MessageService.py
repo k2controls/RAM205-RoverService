@@ -4,7 +4,7 @@ Bluetooth serial connection
 '''
 from serial import Serial
 
-class messageService():
+class MessageService():
 
     def __init__(self):
         self.serial = Serial("/dev/ttyAMA0", 9600)

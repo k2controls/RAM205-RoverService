@@ -6,10 +6,7 @@ command list
 from threading import Thread
 from Bluetooth.CommandMessages import CommandMessages
 from Bluetooth.Command import Command
-# from enum import Enum
-# from messages import mode_messages, analog_messages, button_messages
-# from Commands import Commands
-# from Command import Command
+from Bluetooth.Commands import Commands
 
 class CommandService(Thread):
 
@@ -24,7 +21,7 @@ class CommandService(Thread):
         while True:
             message = self.message_service.get_message()
             commands = self.make_commands(message)
-            self.command_queue.append(commands)
+            self.command_queue.extend(commands)
             
     def make_commands(self, message):
         commands = []   #list of commands due to rgb message creating 3 analog cmds
