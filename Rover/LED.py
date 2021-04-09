@@ -4,7 +4,7 @@ PWM port created only if beep() called
 
 '''
 import RPi.GPIO as GPIO
-
+from Rover.RoverPins import RoverPins
 class LED():
     pin = None
     _pwm = None
@@ -15,7 +15,7 @@ class LED():
         self.active_low = active_low
 
         GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(RoverPins.BOARD_MODE)
 
         GPIO.setup(self.pin, GPIO.OUT)
         

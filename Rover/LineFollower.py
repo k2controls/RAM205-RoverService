@@ -5,7 +5,7 @@ next drive motion
 #from Rover import RoverDrive
 from Rover.RoverDrive import Motion
 import RPi.GPIO as GPIO
-
+from Rover.RoverPins import RoverPins
 class LineFollower():
     _far_left_pin = None
     _left_pin = None
@@ -22,7 +22,7 @@ class LineFollower():
 
         #Config GPIO
         GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(RoverPins.BOARD_MODE)
 
         GPIO.setup(self._far_left_pin, GPIO.IN)
         GPIO.setup(self._left_pin, GPIO.IN)

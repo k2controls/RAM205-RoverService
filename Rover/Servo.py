@@ -3,6 +3,7 @@
 Implements basic servo action
 '''
 import RPi.GPIO as GPIO 
+from Rover.RoverPins import RoverPins
 
 class Servo():
     _FREQ = 50
@@ -27,7 +28,7 @@ class Servo():
         self.duty_cycle = self.mid_duty_cycle
         self.pulse_width = self.duty_cycle/100 * self._PERIOD
 
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(RoverPins.BOARD_MODE)
         GPIO.setwarnings(False)
         GPIO.setup(self._pin, GPIO.OUT)
         self._pwm = GPIO.PWM(self._pin, self._FREQ)

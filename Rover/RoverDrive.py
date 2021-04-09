@@ -5,7 +5,7 @@ Converting module to a Python class
 3/1/21
 '''
 import RPi.GPIO as GPIO
-
+from Rover.RoverPins import RoverPins
 class Motion():
     STOP = "STOP"
     FORWARD = "FORWARD"
@@ -67,7 +67,7 @@ class RoverDrive():
         
         #Configure GPIO settings
         GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(RoverPins.BOARD_MODE)
 
         #set MC pins as output
         GPIO.setup(self._left_in1_pin, GPIO.OUT, initial = False)

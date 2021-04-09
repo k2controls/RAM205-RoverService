@@ -11,7 +11,7 @@ from Rover.RGBLed import RGBLed
 from Rover.RoverDrive import RoverDrive
 from Rover.RoverPins import RoverPins
 from Rover.Servo import Servo
-from Rover.SonarPing import SonarPing
+from Rover.Sonar import Sonar
 from Rover.Warner import Warner
 
 def make_rover():
@@ -56,8 +56,8 @@ def make_rover():
     s = Servo(RoverPins.SERVO_HEADER_1)
     rover.servo = s
 
-    ping = SonarPing(RoverPins.PING_TRIGGER_PIN, RoverPins.PING_PULSE_PIN)
-    rover.sonar_ping = ping
+    sonar = Sonar(RoverPins.PING_TRIGGER_PIN, RoverPins.PING_PULSE_PIN)
+    rover.sonar = sonar
 
     led = LED(RoverPins.SERVO_HEADER_4)
     w = Warner(led, buzzer)
