@@ -42,8 +42,8 @@ class Servo():
             self.position = position
             self.percent_position = position/(self.max_position_value - self.min_position_value)
             delta_dc = self.percent_position * (self.max_duty_cycle-self.min_duty_cycle)
-            offset_dc = self.min_duty_cycle
-            self.duty_cycle = offset_dc + delta_dc
+            offset_dc = self.max_duty_cycle
+            self.duty_cycle = offset_dc - delta_dc
             self.pulse_width = self.duty_cycle/100 * Servo.PERIOD
             self.pwm.ChangeDutyCycle(self.duty_cycle)
 
