@@ -44,7 +44,7 @@ class RoverPins():
         LINE_FOLLOWER_R1_PIN = 4
         LINE_FOLLOWER_R2_PIN = 18
         DRIVE_LEFT_IN1_PIN = 21
-        DRIVE_LEFT_IN2_PIN = 22
+        DRIVE_LEFT_IN2_PIN = 20
         DRIVE_LEFT_EN_PIN = 16
         DRIVE_RIGHT_IN1_PIN = 26
         DRIVE_RIGHT_IN2_PIN = 19
