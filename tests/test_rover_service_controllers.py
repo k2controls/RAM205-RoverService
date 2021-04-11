@@ -60,7 +60,6 @@ def do_tests():
     else:
         print("Rover service controller tests passed.")
         print()
-    time.sleep(20)
-
+    
 
 
