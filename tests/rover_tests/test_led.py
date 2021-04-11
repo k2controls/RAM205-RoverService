@@ -4,7 +4,7 @@ def test_led(rover):
 
     print("Testing led.")
     # test red
-    led = rover.rgb_led.redLED
+    led = rover.rgb_led.red_led
     led.on()
     if input("Is red led on? ").lower()[0]=="y":
         test_count +=1
@@ -18,7 +18,7 @@ def test_led(rover):
         return 0
 
     # test green
-    led = rover.rgb_led.greenLED
+    led = rover.rgb_led.green_led
     led.on()
     if input("Is green led on? ").lower()[0]=="y":
         test_count +=1
@@ -32,7 +32,7 @@ def test_led(rover):
         return 0
 
     # test blue
-    led = rover.rgb_led.blueLED
+    led = rover.rgb_led.blue_led
     led.on()
     if input("Is blue led on? ").lower()[0]=="y":
         test_count +=1
@@ -46,7 +46,7 @@ def test_led(rover):
         return 0
 
     # test other using red
-    led = rover.rgb_led.redLED
+    led = rover.rgb_led.red_led
     led.toggle()
     if input("Did red led toggle on? ").lower()[0]=="y":
         test_count +=1
