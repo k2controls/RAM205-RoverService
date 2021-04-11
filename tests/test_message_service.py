@@ -1,4 +1,4 @@
-from Bluetooth.MessageServiceMock import MessageService
+from Bluetooth.MessageService import MessageService
 
 
 def do_tests():
