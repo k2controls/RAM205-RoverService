@@ -1,16 +1,21 @@
 ''' Message Service Mock
 Mocks message service using list of test messages
 '''
-from Bluetooth.bluetooth_test_messages import bluetooth_test_messages
-
+import time
 class MessageService():
+    def __init__(self, messages=None, message_delay=.5):
+        if messages:    
+            self.messages = messages
+        else:
+            self.messages = list()
+        self.message_delay = message_delay
 
-    def __init__(self):
-        self.test_messages = bluetooth_test_messages
-            
+    def set_message(self, message):
+        self.messages.append(message)
+
     def get_message(self):
-        #wait for start
-        input_str = "0,0,0,0,0,0,0,0,0"            #STOP
-        if len(self.test_messages):
-            input_str = self.test_messages.pop(0)
-        return input_str
+        while not self.messages:
+            time.sleep(self.message_delay)
+        return self.messages.pop(0)
+
+

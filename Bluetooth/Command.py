@@ -1,15 +1,16 @@
-from Bluetooth.Commands import Commands
+from Bluetooth.Commands import Command_Type, Command_ID
+
 
 class Command():
-    command_id = Commands.STOP
-    command_value = None
 
-    def __init__(self, command_id, value=None):
+    def __init__(self, command_type: Command_Type, command_id: Command_ID, value=0, message=""):
+        self.command_type = command_type
         self.command_id = command_id
-        self.command_value = value
+        self.value = value
+        self.message = message
 
     def __str__(self):
-        if self.command_value:
-            return f"{self.command_id} with value {self.command_value}"
+        if self.command_type == Command_Type.ANALOG:
+            return f"{self.command_id.name} (value = {self.value})."
         else:
-            return self.command_id
+            return self.command_id.name

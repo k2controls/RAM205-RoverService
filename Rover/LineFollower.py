@@ -3,15 +3,11 @@ Senses line follower inputs and define
 next drive motion
 '''
 #from Rover import RoverDrive
-from Rover.RoverDrive import Motion
-import RPi.GPIO as GPIO
+from Rover.RoverDrive import DriveMotion
 from Rover.RoverPins import RoverPins
-class LineFollower():
-    _far_left_pin = None
-    _left_pin = None
-    _right_pin = None
-    _far_right_pin = None
+import RPi.GPIO as GPIO
 
+class LineFollower():
 
     def __init__(self, far_left_pin, left_pin, right_pin, far_right_pin):
         
@@ -30,32 +26,36 @@ class LineFollower():
         GPIO.setup(self._far_right_pin, GPIO.IN)
         self.read_state()
 
+    def __str__(self):
+        next = self.next_motion()
+        s = f"Line follower status: {self.state}, Next motion: {next}."
+        return s
+
     def read_state(self):
-        self.far_left = GPIO.input(self._far_left_pin)
-        self.left = GPIO.input(self._left_pin)
-        self.right = GPIO.input(self._right_pin)
-        self.far_right = GPIO.input(self._far_right_pin)
+        ''' Read state return tuple with logic 1 indicated line is sensed. 
+        (sensor is active low.)
+        example: (0110) - line is centered, move forward
+        '''
+        self.far_left = not GPIO.input(self._far_left_pin)
+        self.left = not GPIO.input(self._left_pin)
+        self.right = not GPIO.input(self._right_pin)
+        self.far_right = not GPIO.input(self._far_right_pin)
+        
+        return ({self.far_left},{self.left},{self.right},{self.far_right})
 
     def next_motion(self):
-        self.read_state()
-
-        if not self.far_left and not self.left and self.right and self.far_right:   #0011
-            return Motion.LEFTFORWARD
-        elif not self.far_left and self.left and self.right and self.far_right:    #0111
-            return Motion.LEFTROTATE
-        elif self.far_left and not self.left and not self.right and self.far_right:     #1001
-            return Motion.FORWARD
-        elif self.far_left and not self.left and self.right and self.far_right:         #1011
-            return Motion.LEFTFORWARD
-        elif self.far_left and self.left and not self.right and not self.far_right:     #1100
-            return Motion.RIGHTFORWARD
-        elif self.far_left and self.left and not self.right and self.far_right:         #1101
-            return Motion.RIGHTFORWARD
-        elif self.far_left and self.left and self.right and not self.far_right:         #1110
-            return Motion.RIGHTROTATE
-        elif self.far_left and self.left and self.right and self.far_right:             #1111
-            return Motion.STOP
-        else:
-            # return Stop for any invalid input combination
-            return Motion.STOP
-
+        next = DriveMotion.STOP
+        state = self.read_state()
+        
+        if state == (0,1,1,0):
+            next = DriveMotion.FORWARD    
+        elif state == (0,1,0,0) or state == (1,1,0,0):
+            next = DriveMotion.LEFTFORWARD
+        elif state == (1,0,0,0):
+            next = DriveMotion.LEFTROTATE
+        elif state == (0,0,1,0) or state == (0,0,1,1):
+            next = DriveMotion.RIGHTFORWARD
+        elif state == (0,0,0,1):
+            next = DriveMotion.RIGHTROTATE
+        
+        return next

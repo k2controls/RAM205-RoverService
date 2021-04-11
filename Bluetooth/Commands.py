@@ -1,6 +1,10 @@
 from enum import Enum
+class Command_Type(Enum):
+    CONTROL     = 0
+    ANALOG      = 1
+    MODE        = 2
 
-class Commands(Enum):
+class Command_ID(Enum):
     STOP                = 0
     FORWARD             = 1
     BACKWARD            = 2

@@ -8,7 +8,7 @@ from tests.rover_tests.test_rover_drive import test_rover_drive
 from tests.rover_tests.test_servo import test_servo
 from tests.rover_tests.test_sonar_ping import test_sonar_ping
 from tests.rover_tests.test_warner import test_warner
-
+from Rover.rover_factory import make_rover
 
 def test_rover(rover):
     if not test_buzzer(rover):
@@ -38,3 +38,14 @@ def test_rover(rover):
         else:
             print("All tests passed!")
 
+def do_tests():
+    print("This is a test of the rover unit. Components will be activated")
+    print("and you will be asked to verify by entering either Y or N.")
+    entry = int(input("Enter 1 to start Rover testing. Enter 0 to skip. "))
+    if entry:
+        print()
+        print("Testing Rover...")
+        rover = make_rover()
+        test_rover(rover)
+        print("Rover test complete.")
+    print()    

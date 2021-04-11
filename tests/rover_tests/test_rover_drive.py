@@ -1,87 +1,64 @@
-from Rover.RoverDrive import Motion
+from Rover.RoverDrive import DriveMotion
+
+drive = None
+
+def test_drive_motion(drive_motion : DriveMotion):
+    returnVal = 1
+    try:
+        print()
+        input(f"Rover is stopped. Press Enter to move {drive_motion.name}.")
+        drive.update(drive_motion)
+        if input(f"Is drive moving {drive_motion.name}? ").lower()[0]!="y":
+            returnVal = 0
+        drive.update(DriveMotion.STOP)
+    except:
+        print(f"{drive_motion} test failed due to exception.")
+        returnVal = 0
+        drive.update(DriveMotion.STOP)
+    finally:
+        return returnVal
 
 def test_rover_drive(rover):
-    test_count = 0
-
+    global drive
     drive = rover.rover_drive
+    test_count = 0
 
     print("Testing Rover Drive.")
     print()
     input("PREPARE ROVER FOR MOTION! Press enter to continue.")
     print()
-    input("Rover is stopped. Press Enter to move FORWARD.")
-    drive.update(Motion.FORWARD)
-    if input("Is drive moving FORWARD? ").lower()[0]=="y":
-        test_count +=1
-        drive.update(Motion.STOP)
-    else:
-        drive.update(Motion.STOP)
+    if not test_drive_motion(DriveMotion.FORWARD):
         return 0
-
-    input("Rover is stopped. Press Enter to move BACKWARD.")
-    drive.update(Motion.BACKWARD)
-    if input("Is drive moving BACKWARD? ").lower()[0]=="y":
-        test_count +=1
-        drive.update(Motion.STOP)
-    else:
-        drive.update(Motion.STOP)
+    test_count +=1
+    
+    if not test_drive_motion(DriveMotion.BACKWARD):
         return 0
-
-    input("Rover is stopped. Press Enter to move LEFTFORWARD.")
-    drive.update(Motion.LEFTFORWARD)
-    if input("Is drive moving LEFTFORWARD? ").lower()[0]=="y":
-        test_count +=1
-        drive.update(Motion.STOP)
-    else:
-        drive.update(Motion.STOP)
+    test_count +=1
+    
+    if not test_drive_motion(DriveMotion.LEFTFORWARD):
         return 0
-
-    input("Rover is stopped. Press Enter to move LEFTBACKWARD.")
-    drive.update(Motion.LEFTBACKWARD)
-    if input("Is drive moving LEFTBACKWARD? ").lower()[0]=="y":
-        test_count +=1
-        drive.update(Motion.STOP)
-    else:
-        drive.update(Motion.STOP)
+    test_count +=1
+    
+    if not test_drive_motion(DriveMotion.LEFTBACKWARD):
         return 0
-
-    input("Rover is stopped. Press Enter to move LEFTROTATE.")
-    drive.update(Motion.LEFTROTATE)
-    if input("Is drive moving LEFTROTATE? ").lower()[0]=="y":
-        test_count +=1
-        drive.update(Motion.STOP)
-    else:
-        drive.update(Motion.STOP)
+    test_count +=1
+    
+    if not test_drive_motion(DriveMotion.LEFTROTATE):
         return 0
-
-
-    input("Rover is stopped. Press Enter to move RIGHTFORWARD.")
-    drive.update(Motion.RIGHTFORWARD)
-    if input("Is drive moving RIGHTFORWARD? ").lower()[0]=="y":
-        test_count +=1
-        drive.update(Motion.STOP)
-    else:
-        drive.update(Motion.STOP)
+    test_count +=1
+    
+    if not test_drive_motion(DriveMotion.RIGHTFORWARD):
         return 0
-
-    input("Rover is stopped. Press Enter to move RIGHTBACKWARD.")
-    drive.update(Motion.RIGHTBACKWARD)
-    if input("Is drive moving RIGHTBACKWARD? ").lower()[0]=="y":
-        test_count +=1
-        drive.update(Motion.STOP)
-    else:
-        drive.update(Motion.STOP)
+    test_count +=1
+    
+    if not test_drive_motion(DriveMotion.RIGHTBACKWARD):
         return 0
-
-    input("Rover is stopped. Press Enter to move RIGHTROTATE.")
-    drive.update(Motion.RIGHTROTATE)
-    if input("Is drive moving RIGHTROTATE? ").lower()[0]=="y":
-        test_count +=1
-        drive.update(Motion.STOP)
-    else:
-        drive.update(Motion.STOP)
+    test_count +=1
+    
+    if not test_drive_motion(DriveMotion.RIGHTROTATE):
         return 0
+    test_count +=1
 
-    drive.update(Motion.STOP)
+    drive.update(DriveMotion.STOP)
 
     return test_count

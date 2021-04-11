@@ -7,8 +7,6 @@ from Rover.Servo import Servo
 class Gimbal():
     HORIZONTAL_HOME = 90
     VERTICAL_HOME = 90
-    h_servo = None
-    v_servo = None
 
     def __init__(self, h_servo: Servo, v_servo: Servo):
         self.h_servo = h_servo
@@ -19,5 +17,9 @@ class Gimbal():
     def __del__(self):
         self.h_servo = None
         self.v_servo = None
+
+    def __str__(self):
+        return f"Horizatal {self.h_servo.__str__()}," \
+                f"Vertical {self.v_servo.__str__()}."
         
         

@@ -34,3 +34,18 @@ class Rover():
         self.servo = None
         self.sonar = None
         self.warner = None
+
+    def __str__(self):
+        s = f"Rover status:\n" \
+        f"{self.buzzer.__str__()}\n" \
+        f"{self.camera.__str__()}\n" \
+        f"{self.gimbal.__str__()}\n" \
+        f"{self.line_follower.__str__()}\n" \
+        f"{self.rgb_led.__str__()}\n" \
+        f"{self.rover_drive.__str__()}\n" \
+        f"{self.servo.__str__()}\n" \
+        f"{self.sonar.__str__()}\n" \
+        f"{self.warner.__str__()}\n"
+
+        return s
+         

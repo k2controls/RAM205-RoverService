@@ -2,34 +2,35 @@
 Encapsulates a light and buzzer to
 create a warning system
 '''
-import RPi.GPIO as GPIO
-import time
-
-#LED_PIN = 19
-#BUZZER_PIN = 24
-
+from Rover.Buzzer import Buzzer, BuzzerStatus
+from Rover.LED import LED, LEDStatus
 class Warner():
-    led = None
-    buzzer = None
-
-    def __init__(self, led, buzzer):
+    
+    def __init__(self, led : LED, buzzer : Buzzer):
         self.led = led
         self.buzzer = buzzer
+        self.status = "OFF"
 
+    def __str__(self):
+        return f"Warner status is {self.status}."
+        
     def on(self):
         self.led.on()
         self.buzzer.on()
-    
+        self.status = "ON"
+
     def off(self):
         self.led.off()
         self.buzzer.off()
+        self.status = "OFF"
 
-    def alarm_on(self, frequency, duty_cycle):
+    def alarm_on(self, frequency = 1, duty_cycle = 50):
         self.led.blink(frequency, duty_cycle)
         self.buzzer.beep(frequency, duty_cycle)
+        self.status = "ALARM"
     
     def alarm_off(self):
-        self.led.blink(1, 0)
-        self.buzzer.beep(1, 0)
-
+        self.led.off()
+        self.buzzer.off()
+        self.status = "OFF"
 
