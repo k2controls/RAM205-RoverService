@@ -13,7 +13,14 @@ class ColorfulController(Thread):
         self.start()
 
     def run(self):
+        ''' TODO RAM205 FINAL
+            Complete this run method to implement the colorful search
+            as implemented in the orignal Yaboom solutions.
+            Just come close, updating with all RGB colors while moving servo
+            Do your own work. Do not share your solution.
+        '''    
         while self.go:
+            # this code is for demo only. Delete as required
             self.rover.rgb_led.set_color(LED_COLOR.WHITE)
             print("x", end="")
             time.sleep(1)

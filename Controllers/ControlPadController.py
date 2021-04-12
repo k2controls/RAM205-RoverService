@@ -12,11 +12,16 @@ class ControlPadController(Controller):
         self.rover = rover
 
     def update(self, command):
+        ''' TODO RAM205 FINAL
+            Complete this update method to implement all Control Pad functions
+            Do your own work. Do not share your solution.
+        '''    
         self.last_command = command
         print(f">>>CommandID={command.command_id}, Value={command.value}")
 
         if command.command_id == Command_ID.BEEP:
             self.rover.buzzer.toggle()
+        ### continue here
 
     def teardown(self):
         pass

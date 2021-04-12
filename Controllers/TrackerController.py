@@ -13,7 +13,12 @@ class TrackerController(Thread):
         self.start()
 
     def run(self):
+        ''' TODO RAM205 FINAL
+            Complete this run method to implement line tracking.
+            Do your own work. Do not share your solution.
+        '''  
         while self.go:
+            # This code is for demo only. Delete as required
             self.rover.rgb_led.set_color(LED_COLOR.GREEN)
             print("z", end="")
             time.sleep(1)
