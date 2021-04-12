@@ -14,6 +14,8 @@ class RoverService(Thread):
     def __init__(self, command_service, rover):
         self.command_service = command_service
         self.rover = rover
+        self.last_command = None
+        self.command = None
         self.controller = ControlPadController(self.rover)
         Thread.__init__(self)
         self.daemon = True
@@ -22,8 +24,9 @@ class RoverService(Thread):
     def run(self):
         while True:
             if self.command_service.command_queue:
-                command = self.command_service.command_queue.pop(0)
-                self.do_command(command)
+                self.last_command = command
+                self.command = self.command_service.command_queue.pop(0)
+                self.do_command(self.command)
                
     def do_command(self, command):
         if command.command_type == Command_Type.MODE:

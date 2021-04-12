@@ -25,6 +25,7 @@ def make_rover_service():
     rover_service = RoverService(cs,rover)
     
 def test_default_controller():
+    print("Checking default controller...")
     if type(rover_service.controller) == ControlPadController:
         print("Default controller test passed.")
         return True
@@ -33,15 +34,16 @@ def test_default_controller():
         return False
 
 def test_switch_controller(mode_message, controller_type):
+    print(f"\nSwitching to controller {controller_type}...")
     message_service.set_message(mode_message)
-    time.sleep(1)
+    time.sleep(10)
     if type(rover_service.controller) == controller_type:
-        print(f"Switch controller test passed. type={type(rover_service.controller)}")
+        print(f"\nSwitch controller test passed. type={type(rover_service.controller)}")
         return True
     else:
-        print(f"Switch controller test failed. type={type(rover_service.controller)}")
+        print(f"\nSwitch controller test failed. type={type(rover_service.controller)}")
         return False
-
+    
 def do_tests():
     non_mode_message = "0,0,0,0,0,0,0,0,0"
     make_rover_service()

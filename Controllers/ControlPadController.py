@@ -17,3 +17,6 @@ class ControlPadController(Controller):
 
         if command.command_id == Command_ID.BEEP:
             self.rover.buzzer.toggle()
+
+    def teardown(self):
+        pass
